@@ -37,6 +37,7 @@ A Vercel vai publicar os arquivos de `public/` como site estatico e as rotas em 
 
 - `/api/analyze`
 - `/api/analyze-text`
+- `/api/analyze-file`
 
 Variaveis opcionais:
 
@@ -45,4 +46,4 @@ Variaveis opcionais:
 - `HF_ASR_MODEL`: modelo usado para transcrever audio quando o video nao tem legenda. Padrao: `openai/whisper-large-v3-turbo`.
 - `MAX_AUDIO_BYTES`: limite de audio baixado antes de enviar ao Hugging Face. Padrao: `18874368`.
 
-Observacao: a rota do YouTube tenta usar legendas publicas primeiro. Se nao houver legenda, ela baixa o audio e envia para o Hugging Face transcrever. Se o YouTube bloquear o download do audio, se o video for grande demais, ou se `HF_TOKEN` nao estiver configurado, o fallback de transcricao manual continua funcionando.
+Observacao: a rota do YouTube tenta usar legendas publicas primeiro. Se nao houver legenda, ela tenta baixar o audio e enviar para o Hugging Face transcrever. O YouTube pode bloquear servidores da Vercel com mensagens como "Sign in to confirm you're not a bot"; nesse caso, use o upload de arquivo de video/audio. Se `HF_TOKEN` nao estiver configurado, a transcricao por arquivo nao funciona.

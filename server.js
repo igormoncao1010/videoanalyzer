@@ -2,6 +2,7 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const analyzeHandler = require("./api/analyze");
+const analyzeFileHandler = require("./api/analyze-file");
 const analyzeTextHandler = require("./api/analyze-text");
 
 const PORT = Number(process.env.PORT || 5173);
@@ -49,6 +50,11 @@ const server = http.createServer((req, res) => {
 
   if (req.url === "/api/analyze-text") {
     analyzeTextHandler(req, res);
+    return;
+  }
+
+  if (req.url === "/api/analyze-file") {
+    analyzeFileHandler(req, res);
     return;
   }
 

@@ -49,8 +49,14 @@
             <button type="submit" class="secondary-button">Analisar texto</button>
           </form>
 
+          <form id="file-form" class="file-form">
+            <label for="media-file">Arquivo de video/audio</label>
+            <input id="media-file" name="file" type="file" accept="audio/*,video/*" />
+            <button type="submit" class="secondary-button">Analisar arquivo</button>
+          </form>
+
           <div class="limits">
-            <span>Funciona melhor com vídeos que têm legendas públicas ou automáticas.</span>
+            <span>Se o YouTube bloquear o link, envie o arquivo para a IA transcrever.</span>
           </div>
         </div>
 

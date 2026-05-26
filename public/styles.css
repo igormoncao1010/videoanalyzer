@@ -194,7 +194,8 @@ button:disabled {
   font-size: 0.92rem;
 }
 
-.text-form {
+.text-form,
+.file-form {
   display: grid;
   gap: 9px;
   margin: 16px 0;

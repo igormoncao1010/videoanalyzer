@@ -1,5 +1,6 @@
 const form = document.querySelector("#analyze-form");
 const textForm = document.querySelector("#text-form");
+const fileForm = document.querySelector("#file-form");
 const statusEl = document.querySelector("#status");
 const resultsEl = document.querySelector("#results");
 const thumbnailEl = document.querySelector("#thumbnail");
@@ -125,6 +126,39 @@ textForm.addEventListener("submit", async (event) => {
 
     renderResults(data);
     setStatus("Analise do texto concluida.", "success");
+  } catch (error) {
+    setStatus(error.message, "error");
+  } finally {
+    submitButton.disabled = false;
+  }
+});
+
+fileForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const submitButton = fileForm.querySelector("button");
+  const file = fileForm.querySelector("input[type='file']").files[0];
+
+  if (!file) {
+    setStatus("Escolha um arquivo de video ou audio.", "error");
+    return;
+  }
+
+  submitButton.disabled = true;
+  resultsEl.classList.add("hidden");
+  setStatus("Enviando arquivo para o Hugging Face transcrever e analisar...", "loading");
+
+  try {
+    const response = await fetch("/api/analyze-file", {
+      method: "POST",
+      headers: { "Content-Type": file.type || "application/octet-stream" },
+      body: file,
+    });
+
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || "Nao foi possivel analisar o arquivo.");
+
+    renderResults(data);
+    setStatus("Analise do arquivo concluida.", "success");
   } catch (error) {
     setStatus(error.message, "error");
   } finally {
