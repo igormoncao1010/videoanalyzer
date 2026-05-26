@@ -9,7 +9,7 @@ module.exports = async function handler(req, res) {
 
   try {
     const body = await readJsonBody(req);
-    const result = analyzeManualText(body.transcript);
+    const result = await analyzeManualText(body.transcript);
     sendJson(res, 200, result);
   } catch (error) {
     sendError(res, error);

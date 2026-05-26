@@ -5,6 +5,9 @@
   "scripts": {
     "start": "node server.js"
   },
+  "dependencies": {
+    "@distube/ytdl-core": "^4.16.12"
+  },
   "engines": {
     "node": ">=18"
   }
