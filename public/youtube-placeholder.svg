@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" role="img" aria-label="YouTube placeholder">
+  <rect width="960" height="540" fill="#101828"/>
+  <rect x="365" y="210" width="230" height="150" rx="28" fill="#d92d20"/>
+  <path d="M455 245v80l72-40-72-40z" fill="#fff"/>
+  <g fill="#ffffff" opacity=".16">
+    <rect x="70" y="70" width="220" height="16" rx="8"/>
+    <rect x="70" y="104" width="350" height="12" rx="6"/>
+    <rect x="650" y="410" width="230" height="14" rx="7"/>
+    <rect x="720" y="440" width="160" height="10" rx="5"/>
+  </g>
+</svg>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Analisador de Classificacao de Video</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace">
+        <div class="panel input-panel">
+          <div class="brand-row">
+            <div class="mark">▶</div>
+            <div>
+              <p class="eyebrow">MVP YouTube</p>
+              <h1>Analisador de faixa etária</h1>
+            </div>
+          </div>
+
+          <form id="analyze-form" class="url-form">
+            <label for="video-url">Link do vídeo</label>
+            <div class="input-row">
+              <input
+                id="video-url"
+                name="url"
+                type="url"
+                placeholder="https://www.youtube.com/watch?v=..."
+                autocomplete="off"
+                required
+              />
+              <button type="submit">
+                <span>▶</span>
+                Analisar
+              </button>
+            </div>
+          </form>
+
+          <div id="status" class="status" role="status">Cole um link do YouTube para começar.</div>
+
+          <form id="text-form" class="text-form">
+            <label for="manual-transcript">Transcrição manual</label>
+            <textarea
+              id="manual-transcript"
+              name="transcript"
+              rows="5"
+              placeholder="Cole aqui uma transcrição se o vídeo não tiver legenda acessível."
+            ></textarea>
+            <button type="submit" class="secondary-button">Analisar texto</button>
+          </form>
+
+          <div class="limits">
+            <span>Funciona melhor com vídeos que têm legendas públicas ou automáticas.</span>
+          </div>
+        </div>
+
+        <div class="video-preview">
+          <img id="thumbnail" alt="Miniatura do video analisado" src="/youtube-placeholder.svg" />
+          <div class="video-meta">
+            <p id="video-title">Nenhum vídeo analisado ainda</p>
+            <span id="video-author">Aguardando link</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="results" class="results hidden">
+        <div class="score-strip">
+          <div class="score-box rating">
+            <span>Faixa etária</span>
+            <strong id="age-rating">Livre</strong>
+          </div>
+          <div class="score-box">
+            <span>Palavrões</span>
+            <strong id="profanity-total">0</strong>
+          </div>
+          <div class="score-box">
+            <span>Palavras</span>
+            <strong id="word-count">0</strong>
+          </div>
+          <div class="score-box">
+            <span>Legenda</span>
+            <strong id="caption-source">-</strong>
+          </div>
+        </div>
+
+        <div class="analysis-grid">
+          <article class="panel">
+            <h2>Resumo</h2>
+            <p id="summary"></p>
+          </article>
+
+          <article class="panel">
+            <h2>Motivos</h2>
+            <ul id="reasons"></ul>
+          </article>
+
+          <article class="panel">
+            <h2>Temas detectados</h2>
+            <div id="topics" class="chips"></div>
+          </article>
+
+          <article class="panel">
+            <h2>Palavras encontradas</h2>
+            <div id="profanity-list" class="chips"></div>
+          </article>
+        </div>
+
+        <article class="panel transcript-panel">
+          <div class="transcript-head">
+            <h2>Transcrição</h2>
+            <button id="copy-transcript" type="button">Copiar</button>
+          </div>
+          <p id="transcript"></p>
+        </article>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
